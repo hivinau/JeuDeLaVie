@@ -43,7 +43,7 @@ class Mer {
 
   public void creerSardines ()
   {
-    for (int i = 0; i < this.sardines.lenght; i++)
+    for (int i = 0; i < this.sardines.length; i++)
     {
       this.sardines[i] = new Sardine(0,0);
     }
@@ -51,7 +51,7 @@ class Mer {
 
   public void creerRequins ()
   {
-    for (int i = 0; i < this.requins.lenght; i++)
+    for (int i = 0; i < this.requins.length; i++)
     {
       this.requins[i] = new Requin(0,0);
     }
