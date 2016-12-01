@@ -1,6 +1,6 @@
 package jeudelavie.librairies;
 
-import jeudelavie.librairies.exceptions.PoissonException;
+import jeudelavie.librairies.exceptions.*;
 import jeudelavie.librairies.utils.*;
 
 /**
@@ -8,44 +8,77 @@ import jeudelavie.librairies.utils.*;
  * <ul>
  * <li><b>attributes</b>
  * 	<ul>
- * 	<li>age</li>
- * 	<li>position (x et y)</li>
- *	<li>dieAgeAverage</li>
+ * 	<li>age : <p>âge courant du poisson.</p></li>
+ *	<li>maxAge : <p>âge maximum du poisson.</p></li>
+ * 	<li>positionX : <p>position horizontale du poisson.</p></li>
+ * 	<li>positionY : <p>position verticale du poisson.</p></li>
  *	</ul>
  * </li>
  * <li><b>methods</b>
  * 	<ul>
+ * 	<li>getPositionX() : <p>Récupère la position horizontale du poisson.</p></li>
+ * 	<li>getPositionY() : <p>Récupère la position verticale du poisson.</p></li>
+ * 	<li>setAge(age) : <p>Modifie l'âge du poisson.</p></li>
  * 	<li>born() : <p>Donne naissance à un nouveau Poisson.</p></li>
- * 	<li>moveTo(x, y) : <p>Déplace le poisson à la position spécifiée.</p></li>
+ * 	<li>moveTo(x, y) : <p>Déplace le poisson aux nouvelles positions horizontale et verticale.</p></li>
+ * 	<li>isAlive() : <p>Définie si le poisson est vivant ou mort.</p></li>
  * 	</ul>
  * </li>
  * </ul>
- * @author <ul><li>Jesus GARNICA OLARRA</li><li>Hivinau GRAFFE</li></ul>
+ * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
  * @version 1.0
  */
 public class Poisson {
+	
+	public static double someAge = 20.d;
 
 	private double age;
+	private double maxAge;
 	private int positionX;
 	private int positionY;
-	private double dieAgeAverage;
 	
-	public Poisson(double dieAgeAverage) {
+	/**
+	 * <p>Crée une nouvelle instance de {@link jeudelavie.librairies.Poisson}: <br>
+	 * <ul>
+	 * 	<li>Initialise l'âge du poisson à 0.</li>
+	 * 	<li>Initialise l'âge maximum de façon aléatoire en tenant compte d'un âge certain.</li>
+	 * </ul>
+	 * <p>
+	 */
+	public Poisson() {
 		
 		this.age = 0;
-		this.dieAgeAverage = PoissonUtil.randomAge(0.8 * dieAgeAverage, 1.8 * dieAgeAverage);
+		this.maxAge = PoissonUtil.randomAge(0.8 * Poisson.someAge, 1.8 * Poisson.someAge);
 	}
 	
 	/**
-	 * Modifie l'âge du poisson.
+	 * <p>Récupère la position horizontale du poisson.</p>
+	 * @return position horizontale du poisson.
+	 */
+	public int getPositionX() {
+		return positionX;
+	}
+
+	/**
+	 * <p>Récupère la position verticale du poisson.</p>
+	 * @return position verticale du poisson.
+	 */
+	public int getPositionY() {
+		return positionY;
+	}
+
+
+
+	/**
+	 * <p>Modifie l'âge du poisson.</p>
 	 * @param age âge du poisson.
-	 * @throws PoissonException l'âge doit être inférieure à l'âge moyenne auquel le poisson mourra.
+	 * @throws PoissonException l'âge doit être inférieure à un âge certain.
 	 */
 	public void setAge(double age) throws PoissonException {
 		
-		if(age >= dieAgeAverage) {
+		if(age >= Poisson.someAge) {
 			
-			String message = String.format("%.1f doit être inférieure à %.1f", age, dieAgeAverage);
+			String message = String.format("%.1f doit être inférieure à %.1f", age, Poisson.someAge);
 			throw new PoissonException(message);
 		} 
 		
@@ -53,8 +86,8 @@ public class Poisson {
 	}
 	
 	/**
-	 * Donne naissance à un nouveau poisson.
-	 * @return nouveau {@link jeudelavie.librairies.Poisson}
+	 * <p>Donne naissance à un nouveau poisson.</p>
+	 * @return nouvelle instance de {@link jeudelavie.librairies.Poisson}.
 	 */
 	public Poisson born() {
 		
@@ -62,9 +95,9 @@ public class Poisson {
 	}
 	
 	/**
-	 * Déplace le poisson à la position X et Y.
-	 * @param positionX
-	 * @param positionY
+	 * <p>Déplace le poisson aux nouvelles positions horizontale et verticale.</p>
+	 * @param positionX nouvelle position horizontale.
+	 * @param positionY nouvelle position verticale.
 	 */
 	public void moveTo(int positionX, int positionY) {
 		
@@ -73,11 +106,11 @@ public class Poisson {
 	}
 	
 	/**
-	 * Définie si le poisson est vivant ou mort.
+	 * <p>Définie si le poisson est vivant ou mort.</p>
 	 * @return si <b>true</b>, le poisson est encore vivant.
 	 */
 	public boolean isAlive() {
 		
-		return age < dieAgeAverage;
+		return age < maxAge;
 	}
 }
