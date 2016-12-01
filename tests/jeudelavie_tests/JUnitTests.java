@@ -3,15 +3,13 @@ package jeudelavie_tests;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jeudelavie.librairies.*;
-
 public class JUnitTests {
 
 	@Test
 	public void test_PoissonsNotSame() {
 		
-		Poisson poisson1 = new Poisson();
-		Poisson poisson2 = new Poisson();
+		jeudelavie.librairies.Poisson poisson1 = new jeudelavie.librairies.Poisson();
+		jeudelavie.librairies.Poisson poisson2 = new jeudelavie.librairies.Poisson();
 		
 		assertNotSame(poisson1, poisson2);
 	}
@@ -19,7 +17,7 @@ public class JUnitTests {
 	@Test(expected=jeudelavie.librairies.exceptions.PoissonException.class)
 	public void test_PoissonSetHugeAge() throws jeudelavie.librairies.exceptions.PoissonException {
 		
-		Poisson poisson = new Poisson();
+		jeudelavie.librairies.Poisson poisson = new jeudelavie.librairies.Poisson();
 		poisson.setAge(100f);
 	}
 }
