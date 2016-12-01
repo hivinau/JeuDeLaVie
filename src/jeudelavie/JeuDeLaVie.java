@@ -15,6 +15,8 @@ public class JeuDeLaVie {
 		
 		//mer.setCyclesCount(cyclesCount);
 		//mer.start();
+		
+		mer.initializeSea();
 	}
 	
 	public void lancerTemps() {
