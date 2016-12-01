@@ -67,8 +67,6 @@ public class Poisson {
 		return positionY;
 	}
 
-
-
 	/**
 	 * <p>Modifie l'âge du poisson.</p>
 	 * @param age âge du poisson.
