@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 
-class Mer {
+public class Mer {
 
   private final static int SEA_SIZE = 5;
   private final static Poisson EMPTY = null;
