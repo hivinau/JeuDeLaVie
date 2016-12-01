@@ -1,5 +1,7 @@
 package jeudelavie;
 
+import jeudelavie.librairies.Mer;
+
 public class JeuDeLaVie {
 
 	private final Mer mer;
@@ -11,8 +13,8 @@ public class JeuDeLaVie {
 	
 	public void lancerTemps(int cyclesCount) {
 		
-		mer.setCyclesCount(cyclesCount);
-		mer.start();
+		//mer.setCyclesCount(cyclesCount);
+		//mer.start();
 	}
 	
 	public void lancerTemps() {
