@@ -5,7 +5,7 @@ import java.io.*;
 class Mer {
 
   private final static int SEA_SIZE = 5;
-  private final static Object EMPTY = null;
+  private final static Poisson EMPTY = null;
 
   private int width;
   private int height;
