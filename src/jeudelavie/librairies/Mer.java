@@ -11,9 +11,9 @@ class Mer {
   private int height;
   private int numSardines;
   private int numRequins;
-  private Requins[]requins;
-  private Sardines[] sardines;
-  private Poissons[][] sea;
+  private Requin[]requins;
+  private Sardine[] sardines;
+  private Poisson[][] sea;
 
   public Mer (int width, int height, int numSardines, int numRequins)
   {
@@ -21,7 +21,7 @@ class Mer {
     this.height = height;
     this.sardines = new Sardine[numSardines];
     this.requins = new Requin[numRequins];
-    this.sea = new Object[width][height];
+    this.sea = new Poisson[width][height];
   }
 
   public Mer (int numSardines, int numRequins)
