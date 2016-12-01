@@ -38,15 +38,17 @@ public final class Requin extends Poisson implements RequinState {
 		
 		switch(state) {
 		case RequinState.CHILD:
+			//TODO générer aléatoirement la direction du mouvement du requin.
 			break;
 		case RequinState.YOUNG:
+			//TODO 1- s'il y a une sardine dans la case voisine, déplacer le requin vers cette case.
+			//TODO 2- sinon, générer aléatoirement la direction du mouvement du requin.
 			break;
 		case RequinState.ADULT:
+			//TODO déplacer le requin vers la sardine la plus proche.
 			break;
 		default:
 		}
-		
-		//TODO: 
 	}
 
 	public void eat(Sardine sardine) {
