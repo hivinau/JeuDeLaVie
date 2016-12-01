@@ -31,12 +31,16 @@ import jeudelavie.librairies.utils.*;
  */
 public abstract class Poisson {
 	
+	/////////////////////////PROPERTIES/////////////////////////
+	
 	public static double someAge = 20.d;
 
 	private double age;
 	private double maxAge;
 	private int positionX;
 	private int positionY;
+	
+	/////////////////////////INIT/////////////////////////
 	
 	/**
 	 * <p>Crée une nouvelle instance de {@link jeudelavie.librairies.Poisson}: <br>
@@ -52,10 +56,14 @@ public abstract class Poisson {
 		this.maxAge = PoissonUtil.randomAge(0.8 * Poisson.someAge, 1.8 * Poisson.someAge);
 	}
 	
+	/////////////////////////ABSTRACT METHODS/////////////////////////
+	
 	/**
 	 * Déplacement à prévoir.
 	 */
 	public abstract void move();
+	
+	/////////////////////////PUBLIC METHODS/////////////////////////
 	
 	/**
 	 * {@inheritDoc}
@@ -135,6 +143,8 @@ public abstract class Poisson {
 		
 		return age < maxAge;
 	}
+	
+	/////////////////////////PROTECTED METHODS/////////////////////////
 	
 	/**
 	 * <p>Déplace le poisson aux nouvelles positions horizontale et verticale.</p>

@@ -6,18 +6,25 @@ import org.junit.Test;
 public class JUnitTests {
 
 	@Test
-	public void test_PoissonsNotSame() {
+	public void test_SardineIsNotRequin() {
 		
-		jeudelavie.librairies.Poisson poisson1 = new jeudelavie.librairies.Poisson();
-		jeudelavie.librairies.Poisson poisson2 = new jeudelavie.librairies.Poisson();
+		jeudelavie.librairies.Poisson sardine = new jeudelavie.librairies.Sardine();
+		jeudelavie.librairies.Poisson requin = new jeudelavie.librairies.Requin();
 		
-		assertNotSame(poisson1, poisson2);
+		assertNotSame(sardine, requin);
 	}
 
 	@Test(expected=jeudelavie.librairies.exceptions.PoissonException.class)
-	public void test_PoissonSetHugeAge() throws jeudelavie.librairies.exceptions.PoissonException {
+	public void test_SardineSetHugeAge() throws jeudelavie.librairies.exceptions.PoissonException {
 		
-		jeudelavie.librairies.Poisson poisson = new jeudelavie.librairies.Poisson();
-		poisson.setAge(100f);
+		jeudelavie.librairies.Sardine sardine = new jeudelavie.librairies.Sardine();
+		sardine.setAge(100f);
+	}
+
+	@Test(expected=jeudelavie.librairies.exceptions.PoissonException.class)
+	public void test_RequinSetHugeAge() throws jeudelavie.librairies.exceptions.PoissonException {
+		
+		jeudelavie.librairies.Requin requin = new jeudelavie.librairies.Requin();
+		requin.setAge(100f);
 	}
 }

@@ -10,9 +10,11 @@ public final class Sardine extends Poisson {
 	public Sardine() {
 		
 	}
+	
+	/////////////////////////PUBLIC METHODS/////////////////////////
 
 	@Override
 	public void move() {
-		
+		//TODO: générer aléatoirement la direction du mouvement de la sardine
 	}
 }
