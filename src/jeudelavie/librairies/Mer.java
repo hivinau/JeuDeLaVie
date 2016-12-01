@@ -1,5 +1,3 @@
-package jeudelavie.librairies;
-
 import java.util.*;
 import java.io.*;
 
@@ -13,7 +11,9 @@ class Mer {
   private int height;
   private int numSardines;
   private int numRequins;
-  private Object[][] sea;
+  private Requins[][] requins;
+  private Sardines[][] sardines;
+  private Poissons[][] sea;
 
   public Mer (int width, int height, int numSardines, int numRequins)
   {
@@ -39,6 +39,7 @@ class Mer {
   		}
   	}
   }
+  
 
   public void creerSardines ()
   {
