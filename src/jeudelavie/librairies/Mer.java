@@ -1,3 +1,5 @@
+package jeudelavie.librairies;
+
 import java.util.*;
 import java.io.*;
 
