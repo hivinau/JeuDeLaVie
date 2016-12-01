@@ -49,6 +49,8 @@ public abstract class Poisson {
 	 * 	<li>Initialise l'âge maximum de façon aléatoire en tenant compte d'un âge certain.</li>
 	 * </ul>
 	 * <p>
+	 * @param positionX position horizontale du poisson.
+	 * @param positionY position verticale du poisson.
 	 */
 	public Poisson(int positionX, int positionY) {
 		
