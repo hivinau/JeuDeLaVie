@@ -21,5 +21,10 @@ public class JeuDeLaVie {
 		
 		lancerTemps(0);
 	}
-
+	
+	public static void main(String[] args) {
+		
+		JeuDeLaVie gameLife = new JeuDeLaVie(2, 1);
+		gameLife.lancerTemps(10);
+	}
 }
