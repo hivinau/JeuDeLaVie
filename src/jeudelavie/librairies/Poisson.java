@@ -16,13 +16,13 @@ import jeudelavie.librairies.utils.*;
  * </li>
  * <li><b>methods</b>
  * 	<ul>
- * 	<li>move() : <p>Déplacement à prévoir.</p></li>
+ * 	<li>move() : <p>Déplace le poisson d'une case dans une direction définie.</p></li>
  * 	<li>getPositionX() : <p>Récupère la position horizontale du poisson.</p></li>
  * 	<li>getPositionY() : <p>Récupère la position verticale du poisson.</p></li>
  * 	<li>setAge(age) : <p>Modifie l'âge du poisson.</p></li>
  * 	<li>born() : <p>Donne naissance à un nouveau Poisson.</p></li>
- * 	<li>moveTo(x, y) : <p>Déplace le poisson aux nouvelles positions horizontale et verticale.</p></li>
  * 	<li>isAlive() : <p>Définie si le poisson est vivant ou mort.</p></li>
+ * 	<li>moveTo(x, y) : <p>Déplace le poisson aux nouvelles positions horizontale et verticale.</p></li>
  * 	</ul>
  * </li>
  * </ul>
@@ -50,16 +50,17 @@ public abstract class Poisson {
 	 * </ul>
 	 * <p>
 	 */
-	public Poisson() {
+	public Poisson(int positionX, int positionY) {
 		
 		this.age = 0;
 		this.maxAge = PoissonUtil.randomAge(0.8 * Poisson.someAge, 1.8 * Poisson.someAge);
+		moveTo(positionX, positionY);
 	}
 	
 	/////////////////////////ABSTRACT METHODS/////////////////////////
 	
 	/**
-	 * Déplacement à prévoir.
+	 * Déplace le poisson d'une case dans une direction définie.
 	 */
 	public abstract void move();
 	

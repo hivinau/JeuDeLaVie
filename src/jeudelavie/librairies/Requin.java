@@ -24,7 +24,8 @@ public final class Requin extends Poisson implements RequinState {
 	
 	/////////////////////////INIT/////////////////////////
 
-	public Requin() {
+	public Requin(int positionX, int positionY) {
+		super(positionX, positionY);
 
 		this.state = RequinState.CHILD;
 		this.sardines = new ArrayList<Sardine>();
