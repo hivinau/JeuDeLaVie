@@ -1,7 +1,5 @@
 package jeudelavie;
 
-import jeudelavie.librairies.Mer;
-
 public class JeuDeLaVie {
 
 	private final Mer mer;
