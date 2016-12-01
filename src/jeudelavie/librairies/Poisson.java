@@ -16,6 +16,7 @@ import jeudelavie.librairies.utils.*;
  * </li>
  * <li><b>methods</b>
  * 	<ul>
+ * 	<li>move() : <p>Déplacement à prévoir.</p></li>
  * 	<li>getPositionX() : <p>Récupère la position horizontale du poisson.</p></li>
  * 	<li>getPositionY() : <p>Récupère la position verticale du poisson.</p></li>
  * 	<li>setAge(age) : <p>Modifie l'âge du poisson.</p></li>
@@ -28,7 +29,7 @@ import jeudelavie.librairies.utils.*;
  * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
  * @version 1.0
  */
-public class Poisson {
+public abstract class Poisson {
 	
 	public static double someAge = 20.d;
 
@@ -50,6 +51,11 @@ public class Poisson {
 		this.age = 0;
 		this.maxAge = PoissonUtil.randomAge(0.8 * Poisson.someAge, 1.8 * Poisson.someAge);
 	}
+	
+	/**
+	 * Déplacement à prévoir.
+	 */
+	public abstract void move();
 	
 	/**
 	 * {@inheritDoc}
@@ -122,22 +128,22 @@ public class Poisson {
 	}
 	
 	/**
-	 * <p>Déplace le poisson aux nouvelles positions horizontale et verticale.</p>
-	 * @param positionX nouvelle position horizontale.
-	 * @param positionY nouvelle position verticale.
-	 */
-	public void moveTo(int positionX, int positionY) {
-		
-		this.positionX = positionX;
-		this.positionY = positionY;
-	}
-	
-	/**
 	 * <p>Définie si le poisson est vivant ou mort.</p>
 	 * @return si <b>true</b>, le poisson est encore vivant.
 	 */
 	public boolean isAlive() {
 		
 		return age < maxAge;
+	}
+	
+	/**
+	 * <p>Déplace le poisson aux nouvelles positions horizontale et verticale.</p>
+	 * @param positionX nouvelle position horizontale.
+	 * @param positionY nouvelle position verticale.
+	 */
+	protected void moveTo(int positionX, int positionY) {
+		
+		this.positionX = positionX;
+		this.positionY = positionY;
 	}
 }

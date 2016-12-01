@@ -11,4 +11,8 @@ public final class Sardine extends Poisson {
 		
 	}
 
+	@Override
+	public void move() {
+		
+	}
 }

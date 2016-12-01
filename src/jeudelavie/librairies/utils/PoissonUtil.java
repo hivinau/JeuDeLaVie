@@ -35,9 +35,9 @@ public final class PoissonUtil {
 	 */
 	public static Poisson beBornFrom(Poisson mum) {
 		
-		Poisson daughter = new Poisson();
+		Poisson daughter = (mum instanceof Sardine) ? new Sardine() : new Requin();
 		
-		//TODO: position le poisson fille aux environs du poisson mère
+		//TODO: positionner le poisson fille aux environs du poisson mère
 		
 		return daughter;
 	}
