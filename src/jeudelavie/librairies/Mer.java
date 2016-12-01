@@ -43,17 +43,17 @@ class Mer {
 
   public void creerSardines ()
   {
-    for (int i = 0; i < this.numSardines.lenght; i++)
+    for (int i = 0; i < this.sardines.lenght; i++)
     {
-      this.sardines[i] = new Sardine();
+      this.sardines[i] = new Sardine(0,0);
     }
   }
 
   public void creerRequins ()
   {
-    for (int i = 0; i < this.numRequins.lenght; i++)
+    for (int i = 0; i < this.requins.lenght; i++)
     {
-      this.requins[i] = new Sardine();
+      this.requins[i] = new Requin(0,0);
     }
   }
 
