@@ -52,6 +52,35 @@ public class Poisson {
 	}
 	
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode() {
+
+		double result = age * (positionX + 2) + (positionY - 2);
+
+		return (int)(result * maxAge);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object object) {
+		
+		if(!(object instanceof Poisson)) {
+			
+			return false;
+		}
+		
+		Poisson poisson = (Poisson) object;
+		
+		return positionX == poisson.getPositionX() 
+				&& positionY == poisson.getPositionY()
+				&& isAlive() == poisson.isAlive();
+	}
+	
+	/**
 	 * <p>Récupère la position horizontale du poisson.</p>
 	 * @return position horizontale du poisson.
 	 */
