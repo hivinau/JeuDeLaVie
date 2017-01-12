@@ -45,12 +45,14 @@
 				<exclude name="**/*.java"/>
 			</fileset>
 		</copy>
+		<!--
 		<copy includeemptydirs="false" todir="${classes_directory}">
 			<fileset dir="tests">
 				<exclude name="**/*.launch"/>
 				<exclude name="**/*.java"/>
 			</fileset>
 		</copy>
+		-->
 	</target>
 
     <target depends="clean, init" name="build">
@@ -59,7 +61,9 @@
         <javac srcdir="${src_directory}" destdir="${classes_directory}" debug="true" includeantruntime="false"
         	debuglevel="${debug_level}" source="${source_compiler}" target="${target_compiler}" deprecation="true">
     		<src path="src"/>
+    		<!--
     		<src path="tests"/>
+			-->
         	<classpath refid="classpath"/>
         </javac>
     </target>

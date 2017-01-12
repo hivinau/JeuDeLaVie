@@ -42,25 +42,25 @@ public class Mer extends JPanel implements PoissonListener {
 					
 					int moveUp = poisson.getPositionY() - 1;
 
-					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveUp) || (0 > moveUp);
+					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveUp) || (0 > moveUp * items  + poisson.getPositionX());
 					break;
 				case Movement.DOWN:
 					
 					int moveDown = poisson.getPositionY() + 1;
 
-					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveDown) || (moveDown > items);
+					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveDown) || (moveDown * items  + poisson.getPositionX() > items);
 					break;
 				case Movement.LEFT:
 					
 					int moveLeft = poisson.getPositionX() - 1;
 					
-					occupied = (p.getPositionX() == moveLeft && p.getPositionY() == poisson.getPositionY()) || (0 > moveLeft);
+					occupied = (p.getPositionX() == moveLeft && p.getPositionY() == poisson.getPositionY()) || (0 > poisson.getPositionY() * items  + moveLeft);
 					break;
 				case Movement.RIGHT:
 					
 					int moveRight = poisson.getPositionX() + 1;
 
-					occupied = (p.getPositionX() == moveRight && p.getPositionY() == poisson.getPositionY()) || (moveRight > items);
+					occupied = (p.getPositionX() == moveRight && p.getPositionY() == poisson.getPositionY()) || (poisson.getPositionY() * items  + moveRight > items);
 					break;
 				}
 				
