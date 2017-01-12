@@ -50,10 +50,11 @@ public final class Requin extends Poisson implements RequinState {
 	
 	/////////////////////////PUBLIC METHODS/////////////////////////
 	
+	
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
+	/*@Override
 	public void move() {
 		
 		switch(state) {
@@ -69,7 +70,7 @@ public final class Requin extends Poisson implements RequinState {
 			break;
 		default:
 		}
-	}
+	}*/
 
 	/**
 	 * Ajoute une sardine dans le décompte totale de sardines mangés.

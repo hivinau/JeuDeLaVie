@@ -86,11 +86,6 @@ public abstract class Poisson {
 	 * Déplace le poisson d'une case dans une direction définie.
 	 */
 	public void move() {
-
-		//TODO 1- générer aléatoirement la direction du mouvement de la sardine.
-		//TODO 2- vérifier que le déplacement est possible.
-		//TODO 2- a) si possible, déplacer d'une case vers la direction générée
-		//TODO 2- b) sinon, regénérer la direction
 		
 		AppUtil.runOnUIThread(new Runnable() {
 			
