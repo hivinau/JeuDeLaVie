@@ -1,6 +1,7 @@
 package lifegame.view.ui;
 
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.*;
 import java.awt.*;
 import javax.swing.*;
@@ -119,9 +120,11 @@ public class Mer extends JPanel implements PoissonListener {
 	}
 	
 	public void update() {
-
+		
 		lock.lock();
 		try {
+
+			ExecutorService executor = new ThreadPoolExecutor(2, 4, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 			
  			Iterator<Poisson> iterator = poissons.iterator();
 			
@@ -129,19 +132,18 @@ public class Mer extends JPanel implements PoissonListener {
 		    	
 		    	final Poisson poisson = iterator.next();
 		    	
-		    	Thread thread = new Thread(new Runnable() {
+		    	executor.submit(new Runnable() {
 					
 					@Override
 					public void run() {
 
 				    	poisson.move();
-				    	//poisson.born();
 					}
 				});
-		    	
-		    	thread.setPriority(Thread.MIN_PRIORITY);
-		    	thread.start();
 		    }
+		    
+		    executor.shutdown();
+		    executor.awaitTermination(300, TimeUnit.SECONDS);
 		    
 		} catch (Exception ignored) {}
 		finally {
