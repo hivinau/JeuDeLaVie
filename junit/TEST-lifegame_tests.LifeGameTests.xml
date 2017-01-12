@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="MacBook-Pro-de-iOS.local" name="lifegame_tests.LifeGameTests" skipped="0" tests="9" time="5.186" timestamp="2016-12-24T10:29:54">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/classes" />
+    <property name="ant.file.JeuDeLaVie" value="/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie/build.xml" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/usr/local/Cellar/ant/1.9.7/libexec" />
+    <property name="java.runtime.version" value="1.8.0_111-b14" />
+    <property name="ant.file.type.JeuDeLaVie" value="file" />
+    <property name="src_directory" value="src" />
+    <property name="user.name" value="ios_developer" />
+    <property name="junit_directory" value="junit" />
+    <property name="classes_directory" value="build/classes" />
+    <property name="doc_directory" value="doc" />
+    <property name="org.junit-location" value="/Users/ios_developer/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar" />
+    <property name="user.language" value="fr" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib" />
+    <property name="ant.project.default-target" value="build" />
+    <property name="ant.project.name" value="JeuDeLaVie" />
+    <property name="java.version" value="1.8.0_111" />
+    <property name="user.timezone" value="" />
+    <property name="target_compiler" value="1.8" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="52.0" />
+    <property name="build_directory" value="build" />
+    <property name="jar_directory" value="build/jar" />
+    <property name="user.country" value="FR" />
+    <property name="source_compiler" value="1.8" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie/build.xml" />
+    <property name="os.version" value="10.12.2" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="25.111-b14" />
+    <property name="ant.library.dir" value="/usr/local/Cellar/ant/1.9.7/libexec/lib" />
+    <property name="debug_level" value="source,lines,vars" />
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+    <property name="org.hamcrest-location" value="/Users/ios_developer/.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar" />
+    <property name="user.home" value="/Users/ios_developer" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="/Users/ios_developer/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner lifegame_tests.LifeGameTests skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie/junit/TEST-lifegame_tests.LifeGameTests.xml crashfile=/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie/junitvmwatcher3441201168935440347.properties propsfile=/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie/junit1827717391231999400.properties" />
+    <property name="java.class.path" value="/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie/build/classes:/Users/ios_developer/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar:/Users/ios_developer/.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar:/usr/local/Cellar/ant/1.9.7/libexec/lib/ant-launcher.jar:/usr/local/Cellar/ant/1.9.7/libexec/lib/ant.jar:/usr/local/Cellar/ant/1.9.7/libexec/lib/ant-junit.jar:/usr/local/Cellar/ant/1.9.7/libexec/lib/ant-junit4.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.7 compiled on April 9 2016" />
+    <property name="executable_name" value="lifegame.jar" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.8" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="java.io.tmpdir" value="/var/folders/1r/953tr9fx2fx_j54k1jjdt7h80000gn/T/" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="os.arch" value="x86_64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+    <property name="java.ext.dirs" value="/Users/ios_developer/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="user.dir" value="/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="basedir" value="/Users/ios_developer/Desktop/M2_DNR2i/JAVA/JeuDeLaVie" />
+    <property name="ant.java.version" value="1.8" />
+    <property name="ant.core.lib" value="/usr/local/Cellar/ant/1.9.7/libexec/lib/ant.jar" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.specification.version" value="1.8" />
+    <property name="ant.project.invoked-targets" value="test" />
+  </properties>
+  <testcase classname="lifegame_tests.LifeGameTests" name="sardineDieAutomaticallyBeforePotentialMaxAge" time="0.002" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="requinDieAutomaticallyBeforePotentialMaxAge" time="0.0" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="setRequinNegativeAge" time="0.001" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="setRequinZeroAge" time="0.0" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="setSardineNegativeAge" time="0.001" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="setSardineHugeAge" time="0.0" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="setRequinHugeAge" time="0.001" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="sardineNotEqualsRequin" time="0.0" />
+  <testcase classname="lifegame_tests.LifeGameTests" name="setSardineZeroAge" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

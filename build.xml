@@ -1,81 +1,109 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="JeuDeLaVie">
-    <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../eclipse/jee-neon/Eclipse.app/Contents/Eclipse/"/>
-    <property name="junit.output.dir" value="junit"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.8"/>
-    <property name="source" value="1.8"/>
-    <path id="JUnit 4.libraryclasspath">
-        <pathelement location="../../../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="../../../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+<project basedir="." default="build" name="JeuDeLaVie">
+	
+	<property name="build_directory" value="build"/>
+	<property name="junit_directory" value="junit"/>
+	<property name="classes_directory" value="${build_directory}/classes"/>
+	<property name="jar_directory" value="${build_directory}/jar"/>
+	<property name="executable_name" value="lifegame.jar"/>
+	<property name="src_directory" value="src"/>
+	<property name="doc_directory" value="doc"/>
+    <property name="target_compiler" value="1.8"/>
+    <property name="source_compiler" value="1.8"/>
+    <property name="debug_level" value="source,lines,vars"/>
+	<property name="org.junit-location" value="/Users/ios_developer/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+	<property name="org.hamcrest-location" value="/Users/ios_developer/.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    <property name="author" value="Jesus GARNICA OLARRA, Hivinau GRAFFE"/>
+    <property name="app_name" value="Jeu de la vie"/>
+    <property name="app_version" value="1.0.1"/>
+	
+    <path id="junit-classpath">
+        <pathelement location="${org.junit-location}"/>
+        <pathelement location="${org.hamcrest-location}"/>
     </path>
-    <path id="JeuDeLaVie.classpath">
-        <pathelement location="bin"/>
-        <path refid="JUnit 4.libraryclasspath"/>
+    <path id="classpath">
+    	<fileset dir="${classes_directory}">
+    		<include name="*.jar"/>
+    	</fileset>
+        <pathelement location="${classes_directory}"/>
+        <path refid="junit-classpath"/>
     </path>
-    <target name="init">
-        <mkdir dir="bin"/>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="src">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="tests">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
+	
     <target name="clean">
-        <delete dir="bin"/>
+        <delete dir="${classes_directory}"/>
     </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
-            <src path="tests"/>
-            <classpath refid="JeuDeLaVie.classpath"/>
+	<target depends="clean" name="cleanall">
+        <delete dir="${build_directory}"/>
+        <delete dir="${junit_directory}"/>
+		<delete dir="${doc_directory}"/>
+	</target>
+	
+	<target name="init">
+		<mkdir dir="${classes_directory}"/>
+		<copy includeemptydirs="false" todir="${classes_directory}">
+			<fileset dir="src">
+				<exclude name="**/*.launch"/>
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+		<copy includeemptydirs="false" todir="${classes_directory}">
+			<fileset dir="tests">
+				<exclude name="**/*.launch"/>
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+    <target depends="clean, init" name="build">
+        <mkdir dir="${classes_directory}"/>
+        <echo message="${classes_directory}: created"/>
+        <javac srcdir="${src_directory}" destdir="${classes_directory}" debug="true" includeantruntime="false"
+        	debuglevel="${debug_level}" source="${source_compiler}" target="${target_compiler}" deprecation="true">
+    		<src path="src"/>
+    		<src path="tests"/>
+        	<classpath refid="classpath"/>
         </javac>
     </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
+
+    <target depends="build" name="create-jar">
+        <echo message="${jar_directory}/${executable_name}: generated"/>
+        <mkdir dir="${jar_directory}"/>
+        <jar destfile="${jar_directory}/${executable_name}" basedir="${classes_directory}">
+            <manifest>
+                <attribute name="Main-Class" value="lifegame.Main"/>
+            	<attribute name="Created-By" value="${author}"/>
+				<attribute name="Implementation-Title" value="${app_name}"/>
+            	<attribute name="Implementation-Version" value="${app_version}"/>
+            </manifest>
+        </jar>
     </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
+
+    <target depends="create-jar" name="run">
+    	<tstamp>
+    	      <format property="execute_time" pattern="d MMMM yyyy hh:mm aa"
+    	              offset="0" unit="hour" timezone="Europe/Paris"/>
+    	  </tstamp>
+    	<echo message="Launch at: ${execute_time}"/>
+        <java jar="${jar_directory}/${executable_name}" fork="true">
+        	<sysproperty key="app_name" value="${app_name}"/>
+        </java>
     </target>
-    <target name="tests">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="jeudelavie_tests.JUnitTests" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="JeuDeLaVie.classpath"/>
-        </junit>
-    </target>
-    <target name="junitreport">
-        <junitreport todir="${junit.output.dir}">
-            <fileset dir="${junit.output.dir}">
-                <include name="TEST-*.xml"/>
-            </fileset>
-            <report format="frames" todir="${junit.output.dir}"/>
-        </junitreport>
-    </target>
+	
+	<target depends="build" name="test">
+		<mkdir dir="${junit_directory}"/>
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml"/>
+			<test name="lifegame_tests.LifeGameTests" todir="${junit_directory}"/>
+			<jvmarg line="-ea"/>
+            <classpath refid="classpath"/>
+		</junit>
+	</target>
+	
+	<target name="javadoc">
+		<javadoc sourcepath="${src_directory}" destdir="${doc_directory}">
+			<fileset dir="${src_directory}" defaultexcludes="yes">
+				<include name="**" />
+			</fileset>
+		</javadoc>
+	</target>
+
 </project>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE resources SYSTEM "../.files/strings.dtd">
+<resources>
+	<string name="close_app__title">Confirmation de fermeture</string>
+	<string name="close_app__message">Voulez-vous vraiment quitter l'application ?</string>
+</resources>
