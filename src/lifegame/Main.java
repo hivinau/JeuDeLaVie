@@ -22,11 +22,14 @@ public class Main {
 			
 			@Override
 			public void run() {
+				//démarrer un jeu de la vie avec initialement:
+				//5 sardine
+				//1 requin
 				
 				LifeGame game = new LifeGame(5, 1);
 				game.setVisible(true);
 				
-				game.start();
+				game.start(); //démarre les cycles indéfiniment.
 			}
 		});
 	}

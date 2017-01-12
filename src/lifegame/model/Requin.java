@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import lifegame.model.states.*;
 
 /**
- * <b>Requin <u>extends</u> {@link lifegame.librairies.Poissonn}</b><br>
+ * <b>Requin <u>extends</u> {@link lifegame.librairies.Poisson}</b><br>
  * <ul>
  * <li><b>methods</b>
  * <ul>

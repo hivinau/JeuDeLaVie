@@ -8,6 +8,12 @@ import lifegame.librairies.utils.*;
 import lifegame.model.*;
 import lifegame.model.listeners.*;
 
+/**
+ * <b>Mer:</b><br>
+ * <p>Contient une gridview.</p>
+ * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @version 1.0
+ */
 public class Mer extends JPanel implements PoissonListener {
 
 	private static final long serialVersionUID = 3547286219604869107L;
@@ -177,6 +183,15 @@ public class Mer extends JPanel implements PoissonListener {
 		}
 	}
 
+	/**
+	 * <p>Crée une nouvelle instance de {@link lifegame.view.ui.Mer}: <br>
+	 * <ul>
+	 * 	<li>Initialise les composants.</li>
+	 * </ul>
+	 * <p>
+	 * @param sardinesCount nombre de sardines.
+	 * @param requinsCount nombre de requins.
+	 */
 	public Mer(int sardinesCount, int requinsCount) {
 
 		poissons = new HashSet<>();
@@ -185,6 +200,9 @@ public class Mer extends JPanel implements PoissonListener {
 		initComponents(sardinesCount, requinsCount);
 	}
 
+	/**
+	 * Délègue les déplacements de chaque poisson.
+	 */
 	public void update() {
 
 		lock.lock();
@@ -216,6 +234,11 @@ public class Mer extends JPanel implements PoissonListener {
 		}
 	}
 
+	/**
+	 * Initialise les composants.
+	 * @param sardinesCount nombre de sardines.
+	 * @param requinsCount nombre de requins.
+	 */
 	private void initComponents(int sardinesCount, int requinsCount) {
 
 		Resources resources = Resources.getInstance();
@@ -281,6 +304,10 @@ public class Mer extends JPanel implements PoissonListener {
 		}
 	}
 
+	/**
+	 * Ajoute un poisson à la mer.
+	 * @param poisson poisson à ajouter.
+	 */
 	private void add(Poisson poisson) {
 
 		Square square = getSquare(poisson.getPositionX(), poisson.getPositionY());
@@ -291,6 +318,10 @@ public class Mer extends JPanel implements PoissonListener {
 		}
 	}
 
+	/**
+	 * Retire un poisson de la mer.
+	 * @param poisson poisson à retirer.
+	 */
 	private void remove(Poisson poisson) {
 
 		Square square = getSquare(poisson.getPositionX(), poisson.getPositionY());
@@ -301,6 +332,12 @@ public class Mer extends JPanel implements PoissonListener {
 		}
 	}
 
+	/**
+	 * Récupère l'espace occupé à une position précise.
+	 * @param col position x.
+	 * @param row position y.
+	 * @return espace occupé.
+	 */
 	private Square getSquare(int col, int row) {
 
 		Resources resources = Resources.getInstance();

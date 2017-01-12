@@ -7,6 +7,12 @@ import lifegame.controller.*;
 import lifegame.librairies.utils.*;
 import lifegame.view.ui.*;
 
+/**
+ * <b>LifeGame:</b><br>
+ * <p>Permet de gérer une mer et des poissons.</p>
+ * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @version 1.0
+ */
 public class LifeGame extends JFrame implements CycleTaskListener {
 	
 	private static final long serialVersionUID = -1228926649796995669L;
@@ -54,6 +60,16 @@ public class LifeGame extends JFrame implements CycleTaskListener {
 		}
 	}
 	
+	/**
+	 * <p>Crée une nouvelle instance de {@link lifegame.view.LifeGame}: <br>
+	 * <ul>
+	 * 	<li>Initialise les fichiers de configurations.</li>
+	 * 	<li>Initialise les composants.</li>
+	 * </ul>
+	 * <p>
+	 * @param sardinesCount nombre de sardines.
+	 * @param requinsCount nombre de requins.
+	 */
 	public LifeGame(int sardinesCount, int requinsCount) {
 		
 		Resources.getInstance().initAppConfiguration();
@@ -64,11 +80,18 @@ public class LifeGame extends JFrame implements CycleTaskListener {
 		initComponents();
 	}
 	
+	/**
+	 * Démarre un nombre de cycles infini.
+	 */
 	public void start() {
 		
 		start(-1);
 	}
 	
+	/**
+	 * Démarre un nombre de cycles défini.
+	 * @param cycles nombre de cycles max à démarrer.
+	 */
 	public void start(int cycles) {
 		
 		final String log;
@@ -98,6 +121,9 @@ public class LifeGame extends JFrame implements CycleTaskListener {
 		timer.schedule(task, 1000, period * 1000);
 	}
 
+	/**
+	 * Initialise les composants.
+	 */
 	private void initComponents() {
 		
 		setMinimumSize(new Dimension(400, 400));

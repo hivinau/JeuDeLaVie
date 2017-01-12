@@ -2,6 +2,19 @@ package lifegame.librairies.utils;
 
 import lifegame.librairies.xml.*;
 
+/**
+ * <b>Resources</b><br>
+ * <ul>
+ * <li><b>methods</b>
+ * <ul>
+ * 	<li>getInstance: <p>Récupère un singleton de cette classe.</p></li>
+ * 	<li>initAppConfiguration: <p>Charge les fichiers XML de configuration.</p></li>
+ * 	<li>getString: <p>Récupère une chaîne de caractères à partir d'un identifiant depuis strings.xml.</p></li>
+ * 	<li>getInt: <p>Récupère un entier à partir d'un identifiant depuis integers.xml.</p></li>
+ * </ul>
+ * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
+ * @version 1.0
+ */
 public final class Resources {
 	
 	private static Resources instance = null;
@@ -12,6 +25,10 @@ public final class Resources {
 		
 	}
 	
+	/**
+	 * Récupère un singleton de cette classe.
+	 * @return {@link lifegame.librairies.utils.Resources}.
+	 */
 	public static Resources getInstance() {
 		
 		if(instance == null) {
@@ -22,12 +39,20 @@ public final class Resources {
 		return instance;
 	}
 	
+	/**
+	 * Charge les fichiers XML de configuration.
+	 */
 	public void initAppConfiguration() {
 		
 		System.setProperty(Resources.STRINGS_FILE, "res/strings.xml");
 		System.setProperty(Resources.INTEGERS_FILE, "res/integers.xml");
 	}
 
+	/**
+	 * Récupère une chaîne de caractères à partir d'un identifiant depuis strings.xml.
+	 * @param id identifiant relatif à une chaîne de caractères.
+	 * @return une chaîne de caractères.
+	 */
 	public String getString(String id) {
 		
 		String result = null;
@@ -46,6 +71,11 @@ public final class Resources {
 		return result;
 	}
 
+	/**
+	 * Récupère un entier à partir d'un identifiant depuis integers.xml.
+	 * @param id identifiant relatif à un entier.
+	 * @return entier.
+	 */
 	public int getInt(String id) {
 		
 		int result = -1;
