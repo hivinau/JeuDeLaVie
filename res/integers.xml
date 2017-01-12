@@ -2,5 +2,5 @@
 <!DOCTYPE resources SYSTEM "../.files/integers.dtd">
 <resources>
 	<int name="grid__items">12</int>
-	<int name="cycle__period">5</int>
+	<int name="cycle__period">2</int>
 </resources>

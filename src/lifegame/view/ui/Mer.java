@@ -1,7 +1,6 @@
 package lifegame.view.ui;
 
 import java.util.*;
-import java.util.concurrent.*;
 import java.util.concurrent.locks.*;
 import java.awt.*;
 import javax.swing.*;
@@ -24,56 +23,68 @@ public class Mer extends JPanel implements PoissonListener {
 		//TODO 2- vérifier que le déplacement est possible.
 		//TODO 2- a) si possible, déplacer d'une case vers la direction générée
 		//TODO 2- b) sinon, regénérer la direction
-		
-		Resources resources = Resources.getInstance();
-		final int items = resources.getInt("grid__items");
 
-		boolean occupied = false;
-		
 		int available = -1;
-		do {
 
-			int movement = Movement.random();
-			
-			for(Poisson p: poissons) {
-				
-				switch (movement) {
-				case Movement.UP:
-					
-					int moveUp = poisson.getPositionY() - 1;
+		lock.lock();
 
-					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveUp) || (0 > moveUp * items  + poisson.getPositionX());
-					break;
-				case Movement.DOWN:
-					
-					int moveDown = poisson.getPositionY() + 1;
+		try {
 
-					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveDown) || (moveDown * items  + poisson.getPositionX() > items);
-					break;
-				case Movement.LEFT:
-					
-					int moveLeft = poisson.getPositionX() - 1;
-					
-					occupied = (p.getPositionX() == moveLeft && p.getPositionY() == poisson.getPositionY()) || (0 > poisson.getPositionY() * items  + moveLeft);
-					break;
-				case Movement.RIGHT:
-					
-					int moveRight = poisson.getPositionX() + 1;
+			synchronized(this) {
 
-					occupied = (p.getPositionX() == moveRight && p.getPositionY() == poisson.getPositionY()) || (poisson.getPositionY() * items  + moveRight > items);
-					break;
-				}
-				
-				if(!occupied) {
-					
-					break;
-				}
+				boolean occupied = false;
+				do {
+
+					int movement = Movement.random();
+
+					for(Poisson p: poissons) {
+
+						switch (movement) {
+						case Movement.UP:
+
+							int moveUp = poisson.getPositionY() - 1;
+
+							occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveUp);
+							break;
+						case Movement.DOWN:
+
+							int moveDown = poisson.getPositionY() + 1;
+
+							occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveDown);
+							break;
+						case Movement.LEFT:
+
+							int moveLeft = poisson.getPositionX() - 1;
+
+							occupied = (p.getPositionX() == moveLeft && p.getPositionY() == poisson.getPositionY());
+							break;
+						case Movement.RIGHT:
+
+							int moveRight = poisson.getPositionX() + 1;
+
+							occupied = (p.getPositionX() == moveRight && p.getPositionY() == poisson.getPositionY());
+							break;
+						}
+
+						if(!occupied) {
+
+							break;
+						}
+					}
+
+					available = movement;
+
+				} while(occupied && available != -1);
 			}
-			
-			available = movement;
-		
-		} while(occupied && available != -1);
-		
+		} catch(Exception ignored) {
+
+			ignored.printStackTrace();
+		}
+		finally {
+
+			lock.unlock();
+		}
+
 		return available;
 	}
 	
@@ -96,6 +107,7 @@ public class Mer extends JPanel implements PoissonListener {
 					
 					poisson.setPositionX(x);
 					poisson.setPositionY(y);
+					poisson.setPoissonListener(this);
 					
 					poissons.add(poisson);
 					add(poisson);
@@ -129,15 +141,13 @@ public class Mer extends JPanel implements PoissonListener {
 		lock.lock();
 		try {
 
-			ExecutorService executor = new ThreadPoolExecutor(2, 4, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
-			
  			Iterator<Poisson> iterator = poissons.iterator();
 			
-		    while(iterator.hasNext()) {
+ 			while(iterator.hasNext()) {
 		    	
 		    	final Poisson poisson = iterator.next();
 		    	
-		    	executor.submit(new Runnable() {
+		    	Thread thread = new Thread(new Runnable() {
 					
 					@Override
 					public void run() {
@@ -145,10 +155,10 @@ public class Mer extends JPanel implements PoissonListener {
 				    	poisson.move();
 					}
 				});
+		    	
+		    	thread.setPriority(Thread.MIN_PRIORITY);
+		    	thread.start();
 		    }
-		    
-		    executor.shutdown();
-		    executor.awaitTermination(300, TimeUnit.SECONDS);
 		    
 		} catch (Exception ignored) {}
 		finally {
@@ -252,7 +262,7 @@ public class Mer extends JPanel implements PoissonListener {
 		
 		Square square = null;
 		
-		if(index < squares.size()) {
+		if(index > 0 && index < squares.size()) {
 			
 			square = squares.get(index);
 		}

@@ -46,7 +46,7 @@ public abstract class Poisson {
 	 * Âge maximal légal (différent de l'âge maximum qui correspond à l'âge limite de vie du poisson).<br>
 	 * <p>Valeur: <b>20</b></p>
 	 */
-	public static final double MAXIMAL_AGE = 10.0d;
+	public static final double MAXIMAL_AGE = 3.0d;
 
 	private double maxAge;
 
@@ -87,23 +87,27 @@ public abstract class Poisson {
 	 */
 	public void move() {
 		
-		AppUtil.runOnUIThread(new Runnable() {
+		if(listener != null) {
 			
-			@Override
-			public void run() {
+			Resources resources = Resources.getInstance();
+			final int items = resources.getInt("grid__items");
+			
+			Point next = null;
+			
+			do {
 				
-				if(listener != null) {
-					
-					Point next = handlePosition();
-					
-					if(next != null) {
-
-						incrementAge();
-						listener.update(Poisson.this, next.x, next.y);
-					}
-				}
-			}
-		});
+				next = handlePosition();
+				
+			} while(next == null || 
+					next.x < 0 || next.y < 0 || (next.x == 0 && next.y == 0) ||
+					next.x >= items || next.y >= items || (next.x == items && next.y == items));
+			
+			Poisson baby = born();
+			incrementAge();
+			
+			listener.update(Poisson.this, next.x, next.y);
+			listener.update(baby, baby.positionX, baby.positionY);
+		}
 	}
 	
 	/**
