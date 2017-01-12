@@ -3,7 +3,7 @@ package lifegame.model.states;
 /**
  * <b>RequinState:</b><br>
  * <p>Interface représentant l'état d'un requin.</p>
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public interface RequinState {
@@ -28,6 +28,7 @@ public interface RequinState {
 	
 	/**
 	 * Indique la direction à prendre.
+	 * @param state état du requin.
 	 */
 	public void stateChanged(final int state);
 }

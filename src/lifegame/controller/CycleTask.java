@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * <b>CycleTask <u>extends</u> {@link java.util.TimerTask}</b><br>
  * <p>Permet de notifier de façon répétitive un cycle.
- * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public class CycleTask extends TimerTask {

@@ -1,0 +1,11 @@
+lifegame
+lifegame.controller
+lifegame.librairies.utils
+lifegame.librairies.xml
+lifegame.model
+lifegame.model.exceptions
+lifegame.model.listeners
+lifegame.model.providers
+lifegame.model.states
+lifegame.view
+lifegame.view.ui

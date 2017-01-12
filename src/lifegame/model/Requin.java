@@ -5,15 +5,14 @@ import java.util.ArrayList;
 import lifegame.model.states.*;
 
 /**
- * <b>Requin <u>extends</u> {@link lifegame.librairies.Poisson}</b><br>
- * <ul>
- * <li><b>methods</b>
+ * <b>Requin <u>extends</u> {@link lifegame.model.Poisson}</b><br>
+ * <b>methods</b>
  * <ul>
  * 	<li>stateChanged: <p>Indique que l'état du requin à évoluer.</p></li>
  * 	<li>move: <p>Déplace le requin d'une case dans une direction définie.</p></li>
  * 	<li>eat: <p>Ajoute une sardine dans le décompte totale de sardines mangés.</p></li>
  * </ul>
- * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public final class Requin extends Poisson {
@@ -63,7 +62,7 @@ public final class Requin extends Poisson {
 
 	/**
 	 * Ajoute une sardine dans le décompte totale de sardines mangés.
-	 * @param sardine {@link lifegame.librairies.Sardine} à ajouter.
+	 * @param sardine {@link lifegame.model.Sardine} à ajouter.
 	 */
 	public void eat(Sardine sardine) {
 		

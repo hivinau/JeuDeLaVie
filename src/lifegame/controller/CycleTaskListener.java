@@ -2,8 +2,8 @@ package lifegame.controller;
 
 /**
  * <b>CycleTaskListener:</b><br>
- * <p>Interface représentant l'état d'un cycle.</p>
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * <p>Interface représentant l'état d'un cycle.</p> 
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public interface CycleTaskListener {

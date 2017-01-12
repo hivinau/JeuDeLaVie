@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * <b>Movement:</b><br>
  * <p>Utilitaire pour les mouvements.</p>
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public class Movement {
@@ -36,7 +36,7 @@ public class Movement {
 
 	/**
 	 * Génère aléatoirement un mouvement.
-	 * @return un {@link lifegame.librairies.Movement} pouvant être un mouvement suivant:<br>
+	 * @return un {@link lifegame.model.Movement} pouvant être un mouvement suivant:<br>
 	 * <ul>
 	 * <li>UP</li>
 	 * <li>DOWN</li>

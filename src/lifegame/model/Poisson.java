@@ -58,12 +58,11 @@ public abstract class Poisson {
 	/////////////////////////INIT/////////////////////////
 	
 	/**
-	 * <p>Crée une nouvelle instance de {@link lifegame.librairies.Poisson}: <br>
+	 * Crée une nouvelle instance de {@link lifegame.model.Poisson}: <br>
 	 * <ul>
 	 * 	<li>Initialise l'âge du poisson à 0.</li>
 	 * 	<li>Initialise l'âge maximum de façon aléatoire en tenant compte d'un âge certain.</li>
 	 * </ul>
-	 * <p>
 	 * @param positionX position horizontale du poisson.
 	 * @param positionY position verticale du poisson.
 	 */
@@ -172,7 +171,7 @@ public abstract class Poisson {
 	
 	/**
 	 * <p>Modifie la position verticale du poisson</p>
-	 * @param positionX position verticale du poisson.
+	 * @param positionY position verticale du poisson.
 	 */
 	public void setPositionY(int positionY) {
 		
@@ -182,7 +181,7 @@ public abstract class Poisson {
 	/**
 	 * <p>Modifie l'âge du poisson.</p>
 	 * @param age âge du poisson.
-	 * @throws PoissonException l'âge doit être compris entre {@link lifegame.librairies.Poisson.MINIMAL_AGE} et {@link lifegame.librairies.Poisson.MAXIMAL_AGE}.
+	 * @throws PoissonException l'âge doit être compris entre MINIMAL_AGE et MAXIMAL_AGE.
 	 */
 	public void setAge(double age) throws PoissonException {
 		
@@ -219,7 +218,7 @@ public abstract class Poisson {
 	
 	/**
 	 * <p>Donne naissance à un nouveau poisson.</p>
-	 * @return nouvelle instance de {@link lifegame.librairies.Poisson}.
+	 * @return nouvelle instance de {@link lifegame.model.Poisson}.
 	 */
 	public Poisson born() {
 		

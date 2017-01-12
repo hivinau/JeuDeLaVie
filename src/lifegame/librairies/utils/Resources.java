@@ -4,15 +4,14 @@ import lifegame.librairies.xml.*;
 
 /**
  * <b>Resources</b><br>
- * <ul>
- * <li><b>methods</b>
+ * <b>methods</b>
  * <ul>
  * 	<li>getInstance: <p>Récupère un singleton de cette classe.</p></li>
  * 	<li>initAppConfiguration: <p>Charge les fichiers XML de configuration.</p></li>
  * 	<li>getString: <p>Récupère une chaîne de caractères à partir d'un identifiant depuis strings.xml.</p></li>
  * 	<li>getInt: <p>Récupère un entier à partir d'un identifiant depuis integers.xml.</p></li>
  * </ul>
- * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public final class Resources {

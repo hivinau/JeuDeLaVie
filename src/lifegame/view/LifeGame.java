@@ -10,7 +10,7 @@ import lifegame.view.ui.*;
 /**
  * <b>LifeGame:</b><br>
  * <p>Permet de gérer une mer et des poissons.</p>
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public class LifeGame extends JFrame implements CycleTaskListener {

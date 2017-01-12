@@ -12,7 +12,7 @@ import lifegame.model.listeners.*;
 /**
  * <b>Mer:</b><br>
  * <p>Contient une gridview.</p>
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public class Mer extends JPanel implements PoissonListener {

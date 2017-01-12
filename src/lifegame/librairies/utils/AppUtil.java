@@ -5,13 +5,12 @@ import javax.swing.*;
 
 /**
  * <b>AppUtil</b><br>
- * <ul>
- * <li><b>methods</b>
+ * <b>methods</b>
  * <ul>
  * 	<li>closeApp: <p>Ferme l'application.</p></li>
  * 	<li>runOnUIThread: <p>Exécute une closure dans le thread principale.</p></li>
  * </ul>
- * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public final class AppUtil {

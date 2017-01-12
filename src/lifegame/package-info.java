@@ -1,5 +1,5 @@
 /**
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  *
  */
 package lifegame;

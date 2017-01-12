@@ -12,7 +12,7 @@ import lifegame.model.states.RequinState;
 /**
  * <b>Square:</b><br>
  * <p>Représente une case de la mer.</p>
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public class Square extends JPanel implements RequinState {
@@ -55,11 +55,10 @@ public class Square extends JPanel implements RequinState {
 	}
 
 	/**
-	 * <p>Crée une nouvelle instance de {@link lifegame.view.ui.Square}: <br>
+	 * Crée une nouvelle instance de {@link lifegame.view.ui.Square}: <br>
 	 * <ul>
 	 * 	<li>Initialise les composants.</li>
 	 * </ul>
-	 * <p>
 	 */
 	public Square() {
 		

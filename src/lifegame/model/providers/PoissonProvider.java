@@ -8,11 +8,11 @@ import lifegame.model.*;
  * <li><b>methods</b>
  * 	<ul>
  * 	<li>randomAge() : <p>Calcule un âge compris un âge minimum et un âge maximum de façon aléatoire.</p></li>
- * 	<li>beBornFrom() : <p>Crée une nouvelle instance de {@link jeudelavie.librairies.Poisson} en définissant la position de cette instance.</p></li>
+ * 	<li>beBornFrom() : <p>Crée une nouvelle instance de {@link lifegame.model.Poisson} en définissant la position de cette instance.</p></li>
  * 	</ul>
  * </li>
  * </ul>
- * @author <ul><li>Jesus GARNICA OLARRA.</li><li>Hivinau GRAFFE.</li></ul>
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public final class PoissonProvider {
@@ -21,7 +21,7 @@ public final class PoissonProvider {
 	 * <p>Calcule un âge compris un âge minimum et un âge maximum de façon aléatoire.</p>
 	 * @param minAge âge minimum.
 	 * @param maxAge âge maximum.
-	 * @return
+	 * @return âge du poisson.
 	 */
 	public static double randomAge(double minAge, double maxAge) {
 		
@@ -29,9 +29,9 @@ public final class PoissonProvider {
 	}
 
 	/**
-	 * <p>Crée une nouvelle instance de {@link jeudelavie.librairies.Poisson} en définissant la position de cette instance.</p>
+	 * <p>Crée une nouvelle instance de {@link lifegame.model.Poisson} en définissant la position de cette instance.</p>
 	 * @param mum poisson qui donne naissance à un nouveau poisson.
-	 * @return nouvelle instance de {@link jeudelavie.librairies.Poisson}.
+	 * @return nouvelle instance de {@link lifegame.model.Poisson}.
 	 */
 	public static Poisson beBornFrom(Poisson mum) {
 		

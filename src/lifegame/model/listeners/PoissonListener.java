@@ -5,7 +5,7 @@ import lifegame.model.*;
 /**
  * <b>PoissonListener:</b><br>
  * <p>Interface permettant de gérer un poisson sur la mer.</p>
- * @author Jesus GARNICA OLARRA & Hivinau GRAFFE
+ * @author Jesus GARNICA OLARRA, Hivinau GRAFFE
  * @version 1.0
  */
 public interface PoissonListener {
