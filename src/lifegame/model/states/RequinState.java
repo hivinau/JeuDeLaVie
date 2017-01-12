@@ -27,8 +27,7 @@ public interface RequinState {
 	public static final int ADULT = 0x03;
 	
 	/**
-	 * Indique que l'état du requin à évoluer.
-	 * @param state nouvel état du requin
+	 * Indique la direction à prendre.
 	 */
-	public void stateChanged(int state);
+	public void stateChanged(final int state);
 }

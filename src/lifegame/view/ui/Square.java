@@ -7,12 +7,46 @@ import javax.imageio.*;
 import javax.swing.*;
 
 import lifegame.model.*;
+import lifegame.model.states.RequinState;
 
-public class Square extends JPanel {
+public class Square extends JPanel implements RequinState {
 
 	private static final long serialVersionUID = 710206767483697784L;
 	
 	private JLabel imageView = null;
+	private Poisson poisson = null;
+
+	@Override
+	public void stateChanged(final int state) {
+		
+		String url = null;
+		switch (state) {
+		case RequinState.CHILD:
+			
+			url = "drawable/shark_child.png";
+			break;
+		case RequinState.YOUNG:
+			
+			url = "drawable/shark_young.png";
+			break;
+		case RequinState.ADULT:
+			
+			url = "drawable/shark_adult.png";
+			break;
+		}
+		
+		if(url != null) {
+			
+			try {
+
+				setImage(url);
+				
+			} catch(Exception ignored) {
+
+				ignored.printStackTrace();
+			}
+		}
+	}
 
 	public Square() {
 		
@@ -20,20 +54,25 @@ public class Square extends JPanel {
 	}
 	
 	public void setPoisson(Poisson poisson) {
-		
-		try {
-			
-			if(poisson instanceof Sardine) {
+
+		this.poisson = poisson;
+
+		if(this.poisson instanceof Sardine) {
+
+			try {
 
 				setImage("drawable/sardine.png");
-			} else {
+				
+			} catch(Exception ignored) {
 
-				setImage("drawable/shark.png");
+				ignored.printStackTrace();
 			}
-			
-		} catch(Exception exception) {
-			
+		} else {
+
+			((Requin) this.poisson).setRequinState(this);
+			stateChanged(RequinState.CHILD);
 		}
+
 	}
 	
 	public void removePoisson() {

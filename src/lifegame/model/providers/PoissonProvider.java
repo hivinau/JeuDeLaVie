@@ -35,7 +35,7 @@ public final class PoissonProvider {
 	 */
 	public static Poisson beBornFrom(Poisson mum) {
 		
-		Poisson poisson = mum instanceof Sardine ? new Sardine(mum) : new Requin(mum);
+		Poisson poisson = mum instanceof Sardine ? new Sardine(mum.getPositionX(), mum.getPositionY()) : new Requin(mum.getPositionX(), mum.getPositionY());
 		
 		return poisson;
 	}

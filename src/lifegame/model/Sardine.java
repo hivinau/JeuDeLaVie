@@ -16,10 +16,4 @@ public final class Sardine extends Poisson {
 	public Sardine(int positionX, int positionY) {
 		super(positionX, positionY);
 	}
-	
-	public Sardine(Poisson poisson) {
-		
-		this(poisson.positionX, poisson.positionX);
-		age = poisson.age;
-	}
 }
