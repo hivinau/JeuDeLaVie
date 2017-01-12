@@ -46,7 +46,7 @@ public abstract class Poisson {
 	 * Âge maximal légal (différent de l'âge maximum qui correspond à l'âge limite de vie du poisson).<br>
 	 * <p>Valeur: <b>20</b></p>
 	 */
-	public static final double MAXIMAL_AGE = 3.0d;
+	public static final double MAXIMAL_AGE = 10.0d;
 
 	private double maxAge;
 
@@ -99,14 +99,13 @@ public abstract class Poisson {
 				
 				if(listener != null) {
 					
-					Point free = handleFreePosition();
+					Point next = handlePosition();
 					
-					listener.lastPosition(Poisson.this, positionX, positionY);
+					if(next != null) {
 
-					incrementAge();
-					listener.update(Poisson.this, free.x, free.y);
-					
-					listener.currentPosition(Poisson.this, free.x, free.y);
+						incrementAge();
+						listener.update(Poisson.this, next.x, next.y);
+					}
 				}
 			}
 		});
@@ -225,7 +224,7 @@ public abstract class Poisson {
 	 */
 	public Poisson born() {
 		
-		Point point = handleFreePosition();
+		Point point = handlePosition();
 		
 		final Poisson poisson = PoissonProvider.beBornFrom(this);
 
@@ -238,9 +237,9 @@ public abstract class Poisson {
 				
 				if(listener != null) {
 
-					listener.lastPosition(poisson, positionX, positionY);
+					//listener.lastPosition(poisson, positionX, positionY);
 					listener.update(poisson, point.x, point.y);
-					listener.currentPosition(poisson, point.x, point.y);
+					//listener.currentPosition(poisson, point.x, point.y);
 				}
 			}
 		});
@@ -259,16 +258,15 @@ public abstract class Poisson {
 	
 	/////////////////////////PROTECTED METHODS/////////////////////////
 	
-	protected Point handleFreePosition() {
-		
+	protected synchronized Point handlePosition() {
+
 		Point point = null;
-		boolean occupied = false;
 		
-		do {
+		if(listener != null) {
 			
-			int movement = Movement.random();
+			int available = listener.availableDirection(this);
 			
-			switch (movement) {
+			switch (available) {
 			case Movement.UP:
 				
 				point = new Point(positionX, positionY - 1);
@@ -286,13 +284,7 @@ public abstract class Poisson {
 				point = new Point(positionX + 1, positionY);
 				break;
 			}
-			
-			if(point != null) {
-
-				occupied = listener.canMoveToPosition(this, point.x, point.y);
-			}
-		
-		} while(occupied || point == null);
+		}
 		
 		return point;
 	}

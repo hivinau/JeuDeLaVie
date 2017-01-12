@@ -17,42 +17,58 @@ public class Mer extends JPanel implements PoissonListener {
 	private final Lock lock = new ReentrantLock();
 	
 	@Override
-	public boolean canMoveToPosition(Poisson poisson, int x, int y) {
+	public int availableDirection(Poisson poisson) {
 		
 		Resources resources = Resources.getInstance();
-		
 		final int items = resources.getInt("grid__items");
+
+		boolean occupied = false;
 		
-		//check if location is bounded on limits
-		boolean occupied = !((0 <= x && x <= items) && (0 <= y && y <= items));
-		
-		for(Poisson p: poissons) {
+		int available = -1;
+		do {
+
+			int movement = Movement.random();
 			
-			if(p.getPositionX() == x && p.getPositionY() == y) {
+			for(Poisson p: poissons) {
 				
-				occupied = true;
-				break;
+				switch (movement) {
+				case Movement.UP:
+					
+					int moveUp = poisson.getPositionY() - 1;
+
+					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveUp) || (0 > moveUp);
+					break;
+				case Movement.DOWN:
+					
+					int moveDown = poisson.getPositionY() + 1;
+
+					occupied = (p.getPositionX() == poisson.getPositionX() && p.getPositionY() == moveDown) || (moveDown > items);
+					break;
+				case Movement.LEFT:
+					
+					int moveLeft = poisson.getPositionX() - 1;
+					
+					occupied = (p.getPositionX() == moveLeft && p.getPositionY() == poisson.getPositionY()) || (0 > moveLeft);
+					break;
+				case Movement.RIGHT:
+					
+					int moveRight = poisson.getPositionX() + 1;
+
+					occupied = (p.getPositionX() == moveRight && p.getPositionY() == poisson.getPositionY()) || (moveRight > items);
+					break;
+				}
+				
+				if(!occupied) {
+					
+					break;
+				}
 			}
-		}
-		
-		String log = String.format("%s can %s move to case [%d,%d]", poisson instanceof Sardine ? "sardine" : "requin", occupied ? "not" : "", x, y);
-		System.out.println(log);
-		
-		return occupied;
-	}
-	
-	@Override
-	public void lastPosition(Poisson poisson, int x, int y) {
-		
-		Square square = getSquare(x, y);
-		
-		if(square != null) {
 			
-			square.removePoisson();
-			
-			String log = String.format("remove %s from case [%d,%d] ", poisson instanceof Sardine ? "sardine" : "requin", x, y);
-			System.out.println(log);
-		}
+			available = movement;
+		
+		} while(occupied && available != -1);
+		
+		return available;
 	}
 	
 	@Override
@@ -65,18 +81,21 @@ public class Mer extends JPanel implements PoissonListener {
 			synchronized(this) {
 				
 				poissons.remove(poisson);
+				remove(poisson);
 				
 				if(poisson.isAlive()) {
 					
-					Poisson p = poisson instanceof Sardine ? new Sardine(poisson) : new Requin(poisson);
-					p.setPositionX(x);
-					p.setPositionY(y);
-					p.setPoissonListener(this);
+					String log = String.format("move %s from [%d,%d] to [%d,%d]", poisson instanceof Sardine ? "sardine" : "requin", poisson.getPositionX(), poisson.getPositionY(), x, y);
+					System.out.println(log);
 					
-					poissons.add(p);
+					poisson.setPositionX(x);
+					poisson.setPositionY(y);
+					
+					poissons.add(poisson);
+					add(poisson);
 				} else {
 					
-					String log = String.format("%s at case [%d,%d] is died", poisson instanceof Sardine ? "sardine" : "requin", x, y);
+					String log = String.format("%s at [%d,%d] is died", poisson instanceof Sardine ? "sardine" : "requin", poisson.getPositionX(), poisson.getPositionY());
 					System.out.println(log);
 				}
 			}
@@ -88,23 +107,6 @@ public class Mer extends JPanel implements PoissonListener {
 		finally {
 			
 			lock.unlock();
-		}
-	}
-	
-	@Override
-	public void currentPosition(Poisson poisson, int x, int y) {
-		
-		if(poisson.isAlive()) {
-			
-			Square square = getSquare(x, y);
-			
-			if(square != null) {
-				
-				square.setPoisson(poisson);
-				
-				String log = String.format("move %s to case [%d,%d]", poisson instanceof Sardine ? "sardine" : "requin", x, y);
-				System.out.println(log);
-			}
 		}
 	}
 
@@ -210,6 +212,26 @@ public class Mer extends JPanel implements PoissonListener {
 				squares.add(square);
 				add(square);
 			
+		}
+	}
+	
+	private void add(Poisson poisson) {
+		
+		Square square = getSquare(poisson.getPositionX(), poisson.getPositionY());
+		
+		if(square != null) {
+			
+			square.setPoisson(poisson);
+		}
+	}
+	
+	private void remove(Poisson poisson) {
+		
+		Square square = getSquare(poisson.getPositionX(), poisson.getPositionY());
+		
+		if(square != null) {
+			
+			square.removePoisson();
 		}
 	}
 	
